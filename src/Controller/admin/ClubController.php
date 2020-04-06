@@ -5,6 +5,7 @@ namespace App\Controller\admin;
 use App\Entity\ChampionnatMasculinSenior;
 use App\Entity\Club;
 use App\Form\ClubType;
+use App\Form\CreateclubType;
 use App\Repository\ChampionnatMasculinSeniorRepository;
 use App\Repository\ClubRepository;
 use Doctrine\ORM\EntityManagerInterface;
@@ -52,6 +53,28 @@ class ClubController extends AbstractController
         }
         return $this->render('admin/club_modifier.html.twig', [
             'formClub' => $formClub->createView()
+        ]);
+    }
+    /**
+     * @route("admin/club/create", name="admin_club_create")
+     */
+    public function createClub(ClubRepository $clubRepository, Request $request, EntityManagerInterface $entityManager)
+    {
+
+        $club = new Club();
+        //je crée un formulaire qui est relié a mon nouveau livre
+        $formCreateclub = $this->createForm(CreateclubType::class, $club);
+
+        $formCreateclub->handleRequest($request);
+        //je demande a mon formulaire $formBook de gerer les données
+        //de ma requete post
+        if($formCreateclub->isSubmitted() && $formCreateclub->isValid()){
+            //je persist le book
+            $entityManager->persist($club);
+            $entityManager->flush();
+        }
+        return $this->render('admin/club_create.html.twig', [
+            'formCreateclub' => $formCreateclub->createView()
         ]);
     }
 /*

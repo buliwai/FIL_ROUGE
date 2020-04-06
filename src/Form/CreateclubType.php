@@ -2,13 +2,15 @@
 
 namespace App\Form;
 
+use App\Entity\ChampionnatMasculinSenior;
 use App\Entity\Club;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class ClubType extends AbstractType
+class CreateclubType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
@@ -21,6 +23,8 @@ class ClubType extends AbstractType
             ->add('mail')
             ->add('site_web')
             ->add('plan_acces')
+
+            ->add('championnatmasculinsenior', LevelType::class)
 
             //permet de creer le bouton submit
             ->add('submit', SubmitType::class)
