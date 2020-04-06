@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Index Clubs</title>
+    <link href="https://fonts.googleapis.com/css?family=Anton&display=swap" rel="stylesheet">
+    <link rel="stylesheet"  href="{{ asset('css/admin_style.css') }}"  />
+</head>
+<body>
+<header>
+    <nav class="container_header">
+        <div class="header_title">ADMIN</div>
+        <div class="header_nav">
+            <ul>
+                <li><a href="{{ path('admin_dashboard') }}">Accueil Admin</a></li>
+                <li><a href="{{ path('admin_clubs_modifier') }}">Modifier</a></li>
+                <li>Créer</li>
+                <li>Supprimer</li>
+            </ul>
+        </div>
+    </nav>
+    {#
+        <div>
+            <form action="{{ path('admin_club_search') }}"  method="get">
+            <label for="word"></label>
+            <input type="text" name="word" placeholder="Rechercher sur le site…">
+            <button>Rechercher</button>
+        </form>
+    </div>
+    PAS REUSSI A LE FAIRE#}
+</header>
+<main>
+
+
+
+<div class="container_club_infos">
+    <div class="club_infos">
+        {{ form(formClub) }}
+    </div>
+</div>
+
+    
+</main>
+</body>
+</html>
