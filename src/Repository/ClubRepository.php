@@ -2,6 +2,7 @@
 
 namespace App\Repository;
 
+use App\Entity\ChampionnatMasculinSenior;
 use App\Entity\Club;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Common\Persistence\ManagerRegistry;
@@ -18,15 +19,17 @@ class ClubRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Club::class);
     }
-/*
-    public function getByWordInName($word)
+
+    public function getByWordInName1($word)
     {
-
-
         $queryBuilder = $this->createQueryBuilder('club');
 
         $query = $queryBuilder->select('club')
-            ->where('club.nom LIKE :word')
+            ->where('club.code_postal LIKE :word')
+            ->orwhere('club.nom LIKE :word')
+            ->orwhere('club.ville LIKE :word')
+
+
             //permet de sécuriser très important
             ->setParameter('word', '%' . $word . '%')
             ->getQuery();
@@ -37,7 +40,10 @@ class ClubRepository extends ServiceEntityRepository
 
 
     }
-PAS REUSSI A LE FAIRE*/
+//SELECT id, nom FROM club INNER JOIN championnatmasculinsenior ON club.id = championnatmasculinsenior.club_id
+//FROM club
+//INNER JOIN championnatmasculinsenior ON club.id = championnatmasculinsenior.club_id
+
     // /**
     //  * @return Club[] Returns an array of Club objects
     //  */

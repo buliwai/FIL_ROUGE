@@ -6,6 +6,7 @@ use App\Entity\ChampionnatMasculinSenior;
 use App\Entity\Club;
 use App\Form\ClubType;
 use App\Form\CreateclubType;
+use App\Repository\CategoryRepository;
 use App\Repository\ChampionnatMasculinSeniorRepository;
 use App\Repository\ClubRepository;
 use Doctrine\ORM\EntityManagerInterface;
@@ -58,7 +59,7 @@ class ClubController extends AbstractController
     /**
      * @route("admin/club/create", name="admin_club_create")
      */
-    public function createClub(ClubRepository $clubRepository, Request $request, EntityManagerInterface $entityManager)
+    public function createClub(ClubRepository $clubRepository, ChampionnatMasculinSeniorRepository $championnatMasculinSeniorRepository,Request $request, EntityManagerInterface $entityManager)
     {
 
         $club = new Club();
@@ -70,29 +71,32 @@ class ClubController extends AbstractController
         //de ma requete post
         if($formCreateclub->isSubmitted() && $formCreateclub->isValid()){
             //je persist le book
-            $entityManager->persist($club);
-            $entityManager->flush();
+
         }
         return $this->render('admin/club_create.html.twig', [
             'formCreateclub' => $formCreateclub->createView()
         ]);
     }
-/*
+
+
     /**
      * @Route("admin/search", name="admin_club_search")
      */
 
-/*
-    Public function searchByName(ClubRepository $clubRepository, Request $request)
+
+    Public function searchByName1(ClubRepository $clubRepository, ChampionnatMasculinSeniorRepository $championnatMasculinSeniorRepository, CategoryRepository $categoryRepository, Request $request)
     {
         $word = $request->query->get('word');
-        $clubs = $clubRepository->getByWordInName($word);
-
-        return $this->render('admin/index_clubs_modifier.html.twig',[
+        $clubs = $clubRepository->getByWordInName1($word);
+        $niveaux = $championnatMasculinSeniorRepository->getByWordInName1($word);
+        $categorie = $categoryRepository->getByWordInName1($word);
+        return $this->render('admin/search.html.twig',[
             'clubs' => $clubs,
+            'niveaux' => $niveaux,
+            'categorie' => $categorie,
             'word' => $word
         ]);
     }
-   PAS REUSSI A LE FAIRE */
+
 
 }

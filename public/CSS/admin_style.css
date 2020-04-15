@@ -85,7 +85,7 @@ h2{
 /*PAGE CREATION CLUB*/
 .container_club_infos_creation{
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: space-around;
     margin: 20px;
     border: thick double #c5c9df;

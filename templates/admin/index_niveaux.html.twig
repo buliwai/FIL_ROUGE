@@ -20,6 +20,20 @@
     </div>
 
 </div>
+    {% for key, championnatmasculinsenior in club.niveaux %}
+
+        <div class="container_club_infos">
+            <div class="club_infos">
+
+                <p>Categories equipes masculines :</p>
+                {{ championnatmasculinsenior.equipe1 }}
+
+
+
+            </div>
+
+        </div>
+    {% endfor %}
 {% endfor %}
 
 </body>

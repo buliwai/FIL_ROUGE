@@ -1,0 +1,182 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Dashboard</title>
+    <link href="https://fonts.googleapis.com/css?family=Anton&display=swap" rel="stylesheet">
+    <link rel="stylesheet"  href="{{ asset('css/admin_style.css') }}"  />
+</head>
+<body>
+<header>
+<nav class="container_header">
+    <div class="header_title">ADMIN</div>
+    <div class="header_nav">
+        <ul>
+            <li><a href="{{ path('admin_dashboard') }}">Accueil Admin</a></li>
+            <li><a href="{{ path('admin_clubs_modifier') }}">Modifier</a></li>
+            <li><a href="{{ path('admin_club_create') }}">Créer</a></li>
+            <li>Supprimer</li>
+         </ul>
+    </div>
+</nav>
+</header>
+<main>
+
+
+    <h4>Votre recherche : {{ word }}</h4>
+    <div class="search_result">
+        <h3>RESULTAT :</h3>
+    </div>
+    {% for key, club in clubs %}
+        <div class="container_club_infos">
+            <div class="club_infos">
+                <ul>
+
+                    <li>LOGO CLUB A METTRE</li>
+                </ul>
+            </div>
+            <div class="club_infos">
+
+                <ul>
+
+                    <li><h4>{{ club.nom }}</h4></li>
+                    <li>{{ club.adresse }}</li>
+                    <li>{{ club.ville }}</li>
+                    <li>{{ club.codepostal }}</li>
+                    <li>{{ club.telephone }}</li>
+                    <li>{{ club.mail }}</li>
+                    <li><a href="{{ club.siteweb }}">{{ club.siteweb }}</a></li>
+                    <li><a href="{{ club.planacces }}">Pland'accès</a></li>
+                </ul>
+            </div>
+            {% for championnatmasculinsenior in club.championnatmasculinsenior %}
+            <div class="club_infos">
+                <ul>
+
+
+                    <li><h4>CATEGORIE {{ championnatmasculinsenior.category.name }}:</h4></li>
+                    <li>Equipe 1 : {{ championnatmasculinsenior.equipe1 }}</li>
+                    <li>Equipe 2 : {{ championnatmasculinsenior.equipe2 }}</li>
+                    <li>Equipe 3 : {{ championnatmasculinsenior.equipe3 }}</li>
+
+                </ul>
+            </div>
+            {% endfor %}
+        </div>
+
+    {% endfor %}
+
+
+
+
+    {% for key, championnatmasculinsenior in niveaux %}
+
+        <div class="container_club_infos">
+            <div class="club_infos">
+                <ul>
+
+                    <li>LOGO CLUB A METTRE</li>
+                </ul>
+            </div>
+            <div class="club_infos">
+
+                <ul>
+
+                    <li><h4>{{ championnatmasculinsenior.club.nom }}</h4></li>
+                    <li>{{ championnatmasculinsenior.club.adresse }}</li>
+                    <li>{{ championnatmasculinsenior.club.ville }}</li>
+                    <li>{{ championnatmasculinsenior.club.codepostal }}</li>
+                    <li>{{ championnatmasculinsenior.club.telephone }}</li>
+                    <li>{{ championnatmasculinsenior.club.mail }}</li>
+                    <li><a href="{{ championnatmasculinsenior.club.siteweb }}">{{ championnatmasculinsenior.club.siteweb }}</a></li>
+                    <li><a href="{{ championnatmasculinsenior.club.planacces }}">Pland'accès</a></li>
+                </ul>
+            </div>
+
+            <div class="club_infos">
+                <ul>
+
+
+                    <li><h4>CATEGORIE : {{ championnatmasculinsenior.category.name }}:</h4></li>
+                    <li>Equipe 1 : {{ championnatmasculinsenior.equipe1 }}</li>
+                    <li>Equipe 2 : {{ championnatmasculinsenior.equipe2 }}</li>
+                    <li>Equipe 3 : {{ championnatmasculinsenior.equipe3 }}</li>
+
+                </ul>
+            </div>
+
+        </div>
+
+    {% endfor %}
+
+    {% for key, category in categorie %}
+
+
+        {% for championnatmasculinsenior in category.championnatmasculinsenior %}
+    <div class="container_club_infos">
+            <div class="club_infos">
+                    <ul>
+                        <li>LOGO CLUB A METTRE</li>
+                    </ul>
+                </div>
+
+                <div class="club_infos">
+                    <ul>
+                        <li><h4>{{ championnatmasculinsenior.club.nom }}</h4></li>
+                        <li>{{ championnatmasculinsenior.club.adresse }}</li>
+                        <li>{{ championnatmasculinsenior.club.ville }}</li>
+                        <li>{{ championnatmasculinsenior.club.codepostal }}</li>
+                        <li>{{ championnatmasculinsenior.club.telephone }}</li>
+                        <li>{{ championnatmasculinsenior.club.mail }}</li>
+                        <li><a href="{{ championnatmasculinsenior.club.siteweb }}">{{ championnatmasculinsenior.club.siteweb }}</a></li>
+                        <li><a href="{{ championnatmasculinsenior.club.planacces }}">Pland'accès</a></li>
+                    </ul>
+                </div>
+                <div class="club_infos">
+                    <ul>
+                        <li><h4>CATEGORIE : {{ championnatmasculinsenior.category.name }}</h4></li>
+                        <li>Equipe 1 : {{ championnatmasculinsenior.equipe1 }}</li>
+                        <li>Equipe 2 : {{ championnatmasculinsenior.equipe2 }}</li>
+                        <li>Equipe 3 : {{ championnatmasculinsenior.equipe3 }}</li>
+                    </ul>
+
+                </div>
+    </div>
+
+            {% endfor %}
+
+    {% endfor %}
+
+
+</main>
+
+<footer>
+
+</footer>
+</body>
+</html>
+
+{#
+
+{% for key, championnatmasculinsenior in club.niveaux %}
+
+                <div class="container_club_infos">
+                    <div class="club_infos">
+
+                        <p>Categories equipes masculines :</p>
+                        {{ championnatmasculinsenior.equipe1 }}
+
+
+
+                    </div>
+
+                </div>
+            {% endfor %}
+{% for club in clubs %}
+
+
+            <p>Nom du club : {{ club.nom }}</p>
+
+        {% endfor %}
+#}

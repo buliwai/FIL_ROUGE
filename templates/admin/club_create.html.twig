@@ -35,8 +35,9 @@
 
 <div class="container_club_infos_creation">
     <div class="club_infos_creation">
-
         <p>INFOS CLUB</p>
+
+        {{ form_start(formCreateclub)}}
 
         {{ form_label(formCreateclub.nom) }}
         {{ form_widget(formCreateclub.nom) }}
@@ -69,29 +70,74 @@
         {{ form_label(formCreateclub.plan_acces) }}
         {{ form_widget(formCreateclub.plan_acces) }}
         {{ form_errors(formCreateclub.plan_acces) }}
-    </div>
-        <div class="club_infos_creation">
-        <p>NIVEAUX</p>
-        {{ form_label(formCreateclub.championnatmasculinsenior.equipe_1) }}
-        {{ form_widget(formCreateclub.championnatmasculinsenior.equipe_1) }}
-        {{ form_errors(formCreateclub.championnatmasculinsenior.equipe_1) }}
 
-        {{ form_label(formCreateclub.championnatmasculinsenior.equipe_2) }}
-        {{ form_widget(formCreateclub.championnatmasculinsenior.equipe_2) }}
-        {{ form_errors(formCreateclub.championnatmasculinsenior.equipe_2) }}
-
-        {{ form_label(formCreateclub.championnatmasculinsenior.equipe_3) }}
-        {{ form_widget(formCreateclub.championnatmasculinsenior.equipe_3) }}
-        {{ form_errors(formCreateclub.championnatmasculinsenior.equipe_3) }}
+        {{ form_widget(formCreateclub.submit) }}
 
 
+        {{ form_end(formCreateclub) }}
 
 
     </div>
-    <div class="club_infos_creation"> {{ form_widget(formCreateclub.submit) }}</div>
+
 </div>
 
     
 </main>
 </body>
 </html>
+{#           <a href="{{ path('admin_niveaux') }}">
+<div class="club_infos_creation">
+<p>INFOS CLUB</p>
+
+        {{ form_label(formCreateclub.nom) }}
+        {{ form_widget(formCreateclub.nom) }}
+        {{ form_errors(formCreateclub.nom) }}
+
+        {{ form_label(formCreateclub.adresse) }}
+        {{ form_widget(formCreateclub.adresse) }}
+        {{ form_errors(formCreateclub.adresse) }}
+
+        {{ form_label(formCreateclub.ville) }}
+        {{ form_widget(formCreateclub.ville) }}
+        {{ form_errors(formCreateclub.ville) }}
+
+        {{ form_label(formCreateclub.code_postal) }}
+        {{ form_widget(formCreateclub.code_postal) }}
+        {{ form_errors(formCreateclub.code_postal) }}
+
+        {{ form_label(formCreateclub.telephone) }}
+        {{ form_widget(formCreateclub.telephone) }}
+        {{ form_errors(formCreateclub.telephone) }}
+
+        {{ form_label(formCreateclub.mail) }}
+        {{ form_widget(formCreateclub.mail) }}
+        {{ form_errors(formCreateclub.mail) }}
+
+        {{ form_label(formCreateclub.site_web) }}
+        {{ form_widget(formCreateclub.site_web) }}
+        {{ form_errors(formCreateclub.site_web) }}
+
+        {{ form_label(formCreateclub.plan_acces) }}
+        {{ form_widget(formCreateclub.plan_acces) }}
+        {{ form_errors(formCreateclub.plan_acces) }}
+</div>
+<div class="club_infos_creation">
+    <p>NIVEAUX</p>
+    {{ form_label(formCreateclub.championnatmasculinsenior.equipe_1) }}
+    {{ form_widget(formCreateclub.championnatmasculinsenior.equipe_1) }}
+    {{ form_errors(formCreateclub.championnatmasculinsenior.equipe_1) }}
+
+    {{ form_label(formCreateclub.championnatmasculinsenior.equipe_2) }}
+    {{ form_widget(formCreateclub.championnatmasculinsenior.equipe_2) }}
+    {{ form_errors(formCreateclub.championnatmasculinsenior.equipe_2) }}
+
+    {{ form_label(formCreateclub.championnatmasculinsenior.equipe_3) }}
+    {{ form_widget(formCreateclub.championnatmasculinsenior.equipe_3) }}
+    {{ form_errors(formCreateclub.championnatmasculinsenior.equipe_3) }}
+
+
+
+
+</div>
+<div class="club_infos_creation"> {{ form_widget(formCreateclub.submit) }}</div>
+#}

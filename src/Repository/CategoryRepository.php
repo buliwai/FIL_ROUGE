@@ -2,33 +2,30 @@
 
 namespace App\Repository;
 
-use App\Entity\ChampionnatMasculinSenior;
+use App\Entity\Category;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Common\Persistence\ManagerRegistry;
 
 /**
- * @method ChampionnatMasculinSenior|null find($id, $lockMode = null, $lockVersion = null)
- * @method ChampionnatMasculinSenior|null findOneBy(array $criteria, array $orderBy = null)
- * @method ChampionnatMasculinSenior[]    findAll()
- * @method ChampionnatMasculinSenior[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method Category|null find($id, $lockMode = null, $lockVersion = null)
+ * @method Category|null findOneBy(array $criteria, array $orderBy = null)
+ * @method Category[]    findAll()
+ * @method Category[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class ChampionnatMasculinSeniorRepository extends ServiceEntityRepository
+class CategoryRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, ChampionnatMasculinSenior::class);
+        parent::__construct($registry, Category::class);
     }
     public function getByWordInName1($word)
     {
 
 
-        $queryBuilder = $this->createQueryBuilder('championnatmasculinsenior') ;
+        $queryBuilder = $this->createQueryBuilder('category');
 
-        $query = $queryBuilder->select('championnatmasculinsenior')
-
-            ->where('championnatmasculinsenior.equipe_1 LIKE :word')
-            ->orwhere('championnatmasculinsenior.equipe_2 LIKE :word')
-            ->orwhere('championnatmasculinsenior.equipe_3 LIKE :word')
+        $query = $queryBuilder->select('category')
+            ->where('category.name LIKE :word')
 
 
             //permet de sécuriser très important
@@ -41,9 +38,8 @@ class ChampionnatMasculinSeniorRepository extends ServiceEntityRepository
 
 
     }
-
     // /**
-    //  * @return ChampionnatMasculinSenior[] Returns an array of ChampionnatMasculinSenior objects
+    //  * @return Category[] Returns an array of Category objects
     //  */
     /*
     public function findByExampleField($value)
@@ -60,7 +56,7 @@ class ChampionnatMasculinSeniorRepository extends ServiceEntityRepository
     */
 
     /*
-    public function findOneBySomeField($value): ?ChampionnatMasculinSenior
+    public function findOneBySomeField($value): ?Category
     {
         return $this->createQueryBuilder('c')
             ->andWhere('c.exampleField = :val')
